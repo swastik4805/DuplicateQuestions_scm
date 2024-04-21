@@ -5,7 +5,8 @@ const app=express();
 const port=3001;
 
 
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const allowedOrigins = ['https://duplicate-questions-ol2ro9l5m-swastik4805s-projects.vercel.app/', 
+                        'https://duplicate-questions-scm-admin-53zccq4r4-swastik4805s-projects.vercel.app/'];
 let selection="";
 app.use(cors({
     origin: function(origin, callback){
