@@ -7,14 +7,13 @@ function SecondFrontend() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch questions when the component mounts
     fetchQuestions();
   }, []);
 
   const fetchQuestions = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://localhost:3001/questions');
+      const response = await axios.get('http://ec2-13-50-232-36.eu-north-1.compute.amazonaws.com:3001/questions');
       setQuestions(response.data.questions);
       setIsLoading(false);
     } catch (error) {
@@ -23,14 +22,14 @@ function SecondFrontend() {
     }
   };
 
-  const handleOptionChange = (option) => {
+  const handleOptionChange = (option : string) => {
     setSelectedOption(option);
   };
 
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
-      await axios.post('http://localhost:3001/selection', { selection: selectedOption });
+      await axios.post('http://ec2-13-50-232-36.eu-north-1.compute.amazonaws.com:3001/selection', { selection: selectedOption });
       setIsLoading(false);
     } catch (error) {
       console.error('Error sending selection:', error);

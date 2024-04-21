@@ -18,6 +18,8 @@ app.use(cors({
     }
   }));
 app.use(bodyParser.json());
+
+
 const questions = ["Question 1", "Question 2"];
 
 app.get('/questions', (req, res) => {
