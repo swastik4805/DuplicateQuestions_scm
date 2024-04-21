@@ -2,22 +2,27 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from  'cors'
 const app=express();
-const port=3001;
+const port=3002;
 
 
-const allowedOrigins = ['https://duplicate-questions-ol2ro9l5m-swastik4805s-projects.vercel.app/', 
-                        'https://duplicate-questions-scm-admin-53zccq4r4-swastik4805s-projects.vercel.app/'];
 let selection="";
-app.use(cors({
-    origin: function(origin, callback){
-      if(!origin) return callback(null, true);
-      if(allowedOrigins.indexOf(origin) === -1){
-        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    }
-  }));
+// app.use(cors({
+//     origin: function(origin, callback){
+//       if(!origin) return callback(null, true);
+//       if(allowedOrigins.indexOf(origin) === -1){
+//         const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+//         return callback(new Error(msg), false);
+//       }
+//       return callback(null, true);
+//     }
+//   }));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Allow all origins
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allow specific HTTP methods
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow specific headers
+  next();
+});
 app.use(bodyParser.json());
 
 
