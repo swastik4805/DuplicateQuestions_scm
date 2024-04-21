@@ -13,7 +13,7 @@ function SecondFrontend() {
   const fetchQuestions = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://ec2-13-50-232-36.eu-north-1.compute.amazonaws.com:3001/questions');
+      const response = await axios.get('https://duplicatequestions-backend.onrender.com/questions');
       setQuestions(response.data.questions);
       setIsLoading(false);
     } catch (error) {
@@ -29,7 +29,7 @@ function SecondFrontend() {
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
-      await axios.post('http://ec2-13-50-232-36.eu-north-1.compute.amazonaws.com:3001/selection', { selection: selectedOption });
+      await axios.post('https://duplicatequestions-backend.onrender.com/selection', { selection: selectedOption });
       setIsLoading(false);
     } catch (error) {
       console.error('Error sending selection:', error);

@@ -10,7 +10,7 @@ function App() {
   const fetchSelection = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://ec2-13-50-232-36.eu-north-1.compute.amazonaws.com:3001/selection");
+      const response = await axios.get("https://duplicatequestions-backend.onrender.com/selection");
       setSelection(response.data.selection);
       setIsLoading(false);
     } catch (error) {
@@ -36,7 +36,7 @@ function App() {
   
   const submitHandler = async () => {
     try {
-      const response = await axios.post("http://ec2-13-50-232-36.eu-north-1.compute.amazonaws.com:3001/questions", {
+      const response = await axios.post("https://duplicatequestions-backend.onrender.com/questions", {
         question1,
         question2,
       });
