@@ -26,7 +26,7 @@ function App() {
 
     const intervalId = setInterval(() => {
       fetchSelection();
-    }, 5000);
+    }, 5000000);
 
     return () => clearInterval(intervalId);
   }, [selection]);
@@ -45,32 +45,46 @@ function App() {
       console.error(error);
     }
   };
-
   return (
-    <div className="flex justify-center">
-      <div className="">
-        <textarea
-          placeholder="enter question 1"
-          onChange={(e) => {
-            setQuestion1(e.target.value);
-          }}
-        ></textarea>
-        <textarea
-          placeholder="enter question 2"
-          onChange={(e) => {
-            setQuestion2(e.target.value);
-          }}
-        ></textarea>
-        <button onClick={submitHandler}>submit</button>
-
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <p>Selection: {selection || "No selection made yet"}</p>
-        )}
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="w-2/3 p-8 bg-white shadow-lg rounded-lg">
+        <div className="mb-6">
+          <textarea
+            placeholder="Enter question 1"
+            className="w-full h-40 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={(e) => {
+              setQuestion1(e.target.value);
+            }}
+          ></textarea>
+        </div>
+        <div className="mb-6">
+          <textarea
+            placeholder="Enter question 2"
+            className="w-full h-40 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={(e) => {
+              setQuestion2(e.target.value);
+            }}
+          ></textarea>
+        </div>
+        <div className="mb-6">
+          <button
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg w-full shadow-md transition-all"
+            onClick={submitHandler}
+          >
+            Submit
+          </button>
+        </div>
+        <div className="text-center">
+          {isLoading ? (
+            <p className="text-gray-700">Loading...</p>
+          ) : (
+            <p className="text-gray-700">Selection: {selection || "Waiting..."}</p>
+          )}
+        </div>
       </div>
     </div>
   );
+  
 }
 
 export default App;
