@@ -26,7 +26,7 @@ function App() {
 
     const intervalId = setInterval(() => {
       fetchSelection();
-    }, 5000000);
+    }, 5000);
 
     return () => clearInterval(intervalId);
   }, [selection]);
